@@ -1,0 +1,54 @@
+# TF-IDF_Master_Project
+
+Liste des scripts utilisés pour mon projet de maîtrise.
+La fonction « process PDF » utilisant la bibliothèque PyPDF2 a été abandonnée, et un outil OCR a été utilisé à la place en raison de difficultés avec certains fichiers PDF.
+
+Note : Certains commentaires dans le code ont été générés avec l’aide de ChatGPT.
+
+---
+
+## COMMENT UTILISER
+
+1. À la fin du programme, modifiez les chemins de répertoires pour qu’ils correspondent aux emplacements de vos documents.
+
+2. Si vous souhaitez traiter les PDF (les convertir en fichiers .txt) avec ce programme :
+
+   * Retirez les commentaires après la ligne « # Process pdf ».
+   * Modifiez les chemins d’entrée et de sortie selon votre projet.
+     Si vous avez déjà converti les PDF en texte avec un outil OCR ou une autre méthode, passez directement à la section « # Process TFIDF ».
+
+3. Pour la section « # Process pdf » :
+
+   * Le chemin d’entrée doit être un dossier contenant des fichiers PDF.
+   * Le chemin de sortie doit être un dossier vide.
+   * Les PDF doivent être nommés selon le format suivant :
+     codePays_Ticker_année
+   * La sortie sera constituée de fichiers .txt.
+
+4. Utilisez le dossier contenant les fichiers .txt comme dossier d’entrée pour la section « # Process TFIDF ».
+
+5. Préparez deux dossiers vides comme dossiers de sortie pour la section « # Process TFIDF » :
+
+   * Un dossier vide pour la sortie « Fréquence ».
+   * Un dossier vide pour la sortie « TFIDF ».
+
+6. La sortie Fréquence générera des fichiers .txt contenant des dictionnaires où :
+
+   * Les clés sont les mots apparaissant dans le document.
+   * Les valeurs sont le nombre d’occurrences de chaque mot.
+     Un fichier .txt supplémentaire sera créé, contenant un dictionnaire combiné regroupant les paires mot-fréquence pour l’ensemble des documents.
+
+7. La sortie TFIDF contiendra les dictionnaires de fréquences ajustés en fonction des fréquences globales dans l’ensemble des documents.
+
+8. La section « # Process raw_score » utilise le dossier de sortie TFIDF comme entrée.
+   Elle produit un fichier .txt contenant un dictionnaire où :
+
+   * Les clés sont les noms des documents.
+   * Les valeurs sont les scores de similarité pour les documents ayant des années consécutives.
+
+9. La section « # Process documents length » utilise comme entrée le dossier Fréquence issu de la section « # Process TFIDF ».
+   Le dossier de sortie doit être vide.
+   Cette étape produit un fichier .txt contenant un dictionnaire où :
+
+   * Les clés sont les noms des documents.
+   * Les valeurs sont le nombre total de mots dans chaque document.
